@@ -6,7 +6,7 @@
 #    By: adtheus <adtheus@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/09 23:20:17 by adtheus           #+#    #+#              #
-#    Updated: 2021/02/18 11:55:38 by adtheus          ###   ########.fr        #
+#    Updated: 2021/03/19 21:31:00 by adtheus          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = 3615annu
 SRC_DIR = .
 OBJ_DIR = obj
 
-SRC = 			annu.cpp
+SRC = 			annuaire.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
 
@@ -50,6 +50,6 @@ clean	:
 	@rm -f $(OBJ)
 
 fclean	: clean
-	@rm -f $(NAME)
+	@rm -rf $(NAME) $(OBJ_DIR)
 
 re		: fclean all
