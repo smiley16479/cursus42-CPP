@@ -46,7 +46,7 @@ void print_usage(void)
 
 void search(Annu annu[8])
 {
-	std::string str = {"|  index   |first name|last name | nickname |\n"};
+	std::string str = {"|     index|first name| last name|  nickname|\n"};
 	int nb;
 	char c;
 
