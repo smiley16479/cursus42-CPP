@@ -95,7 +95,7 @@ bool		operator!=( Fixed const & i, Fixed const & j )
 	return !(i == j);
 }
 
-// int			operator+( Fixed const & i, Fixed const & j )
+// Fixed	&	operator+( Fixed const & i, Fixed const & j )
 // {
 // 	return ();
 // }

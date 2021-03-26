@@ -20,6 +20,8 @@ public:
 	void	setRawBits(int const raw);
 	float	toFloat(void) const;
 	int		toInt(void) const;
+	Fixed &	operator+=( Fixed const & i );
+	Fixed &	operator-=( Fixed const & i );
 	
 private:
 	static const int _bits = 8;
@@ -35,7 +37,12 @@ bool			operator>=( Fixed const & i, Fixed const & j );
 bool			operator<=( Fixed const & i, Fixed const & j );
 bool			operator==( Fixed const & i, Fixed const & j );
 bool			operator!=( Fixed const & i, Fixed const & j );
+
+Fixed &			operator+( Fixed const & i, Fixed const & j );
+Fixed &			operator-( Fixed const & i, Fixed const & j );
+Fixed &			operator*( Fixed const & i, Fixed const & j );
+Fixed &			operator/( Fixed const & i, Fixed const & j );
 Fixed &			operator--(Fixed const & i );
-bool			operator++(Fixed const & i );
+Fixed &			operator++(Fixed const & i );
 
 #endif
