@@ -22,13 +22,22 @@ public:
 	int		toInt(void) const;
 	Fixed &	operator+=( Fixed const & i );
 	Fixed &	operator-=( Fixed const & i );
-	
+	Fixed &	operator*=( Fixed const & i );
+	Fixed &	operator/=( Fixed const & i );
+	Fixed	operator++( int );
+	Fixed &	operator++( void );
+	Fixed	operator--( int );
+	Fixed &	operator--( void );
+	static	Fixed & min( Fixed & i, Fixed & j );
+	const static	Fixed & min( Fixed const & i, Fixed const & j );
+	static	Fixed & max( Fixed & i, Fixed & j );
+	const static	Fixed & max( Fixed const & i, Fixed const & j );
+
 private:
 	static const int _bits = 8;
 	int _nb;
 
 };
-
 
 std::ostream & 	operator<<( std::ostream & o, Fixed const & i );
 bool			operator>( Fixed const & i, Fixed const & j );
@@ -38,11 +47,9 @@ bool			operator<=( Fixed const & i, Fixed const & j );
 bool			operator==( Fixed const & i, Fixed const & j );
 bool			operator!=( Fixed const & i, Fixed const & j );
 
-Fixed &			operator+( Fixed const & i, Fixed const & j );
-Fixed &			operator-( Fixed const & i, Fixed const & j );
-Fixed &			operator*( Fixed const & i, Fixed const & j );
-Fixed &			operator/( Fixed const & i, Fixed const & j );
-Fixed &			operator--(Fixed const & i );
-Fixed &			operator++(Fixed const & i );
+Fixed			operator+( Fixed const & i, Fixed const & j );
+Fixed			operator-( Fixed const & i, Fixed const & j );
+Fixed			operator*( Fixed const & i, Fixed const & j );
+Fixed			operator/( Fixed const & i, Fixed const & j );
 
 #endif

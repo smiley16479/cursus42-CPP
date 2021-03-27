@@ -1,5 +1,7 @@
 #include "Fixed.class.hpp"
 
+// http://cstl-csm.semo.edu/xzhang/Class%20Folder/CS280/Workbook_HTML/FLOATING_tut.htm
+
 Fixed::Fixed( void ) : _nb( 0 )
 {
 	std::cout << "Default Constructor called" << std::endl;
@@ -61,8 +63,84 @@ Fixed &    Fixed::operator=( Fixed const & rhs )
 {
 	std::cout << "Assignment operator called" << std::endl;
 	if (this != &rhs )
-		this->_nb = rhs.getNb();
+		this->_nb = rhs._nb;
 	return *this;
+}
+
+Fixed &		Fixed::operator+=( Fixed const & i )
+{
+	_nb += i._nb;
+	return *this;
+}
+
+Fixed &		Fixed::operator-=( Fixed const & i )
+{
+	_nb -= i._nb;
+	return *this;
+}
+
+Fixed &		Fixed::operator*=( Fixed const & i )
+{
+	_nb *= i._nb;
+	return *this;
+}
+
+Fixed &		Fixed::operator/=( Fixed const & i )
+{
+	_nb /= i._nb;
+	return *this;
+}
+
+// http://casteyde.christian.free.fr/cpp/cours/online/x3244.html
+
+// Suffixe
+Fixed			Fixed::operator++( int )
+{
+	Fixed tmp(*this);
+	++_nb;
+	return tmp;
+}
+
+// Préfixe
+Fixed &			Fixed::operator++( void )
+{
+	++_nb;
+	return *this;
+}
+
+// Suffixe
+Fixed			Fixed::operator--( int )
+{
+	Fixed tmp(*this);
+	--_nb;
+	return tmp;
+}
+
+// Préfixe
+Fixed &			Fixed::operator--( void )
+{
+	--_nb;
+	return *this;
+}
+
+Fixed & Fixed::min( Fixed & i, Fixed & j )
+{
+	return (i > j ? i : j);
+}
+
+const Fixed & Fixed::min( Fixed const & i, Fixed const & j )
+{
+	return (i > j ? i : j);
+}
+
+Fixed & Fixed::max( Fixed & i, Fixed & j )
+{
+	return (i > j ? i : j);
+}
+
+const Fixed & Fixed::max( Fixed const & i, Fixed const & j )
+{
+	return (i > j ? i : j);
 }
 
 bool		operator>( Fixed const & i, Fixed const & j )
@@ -95,26 +173,33 @@ bool		operator!=( Fixed const & i, Fixed const & j )
 	return !(i == j);
 }
 
-// Fixed	&	operator+( Fixed const & i, Fixed const & j )
-// {
-// 	return ();
-// }
-// int			operator-( Fixed const & i, Fixed const & j )
-// {
-// 	return ();
-// }
-// int			operator*( Fixed const & i, Fixed const & j )
-// {
-// 	return ();
-// }
-// int			operator/( Fixed const & i, Fixed const & j )
-// {
-// 	return ();
-// }
+Fixed		operator+( Fixed const & i, Fixed const & j )
+{
+	Fixed copie(i);
+	copie += j;
+	return (copie);
+}
 
-// Fixed &			operator--(Fixed const & i );
-// bool			operator++(Fixed const & i );
+Fixed		operator-( Fixed const & i, Fixed const & j )
+{
+	Fixed copie(i);
+	copie -= j;
+	return (copie);
+}
 
+Fixed			operator*( Fixed const & i, Fixed const & j )
+{
+	Fixed copie(i);
+	copie *= j;
+	return (copie);
+}
+
+Fixed			operator/( Fixed const & i, Fixed const & j )
+{
+	Fixed copie(i);
+	copie /= j;
+	return (copie);
+}
 
 std::ostream &    operator<<( std::ostream & o, Fixed const & i )
 {
