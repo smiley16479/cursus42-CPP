@@ -14,7 +14,8 @@ Fixed::Fixed( int const n ) : _nb( n << _bits )
 	return ;
 }
 
-Fixed::Fixed( float const n )  : _nb( n * 256 )
+// Fixed::Fixed( float const n )  : _nb( roundf( n * (1 << _bits)) )
+Fixed::Fixed( float const n )  : _nb( n * (1 << _bits) )
 {
 	std::cout << "Parametric Constructor called" << std::endl;
 	return ;
@@ -46,12 +47,12 @@ int Fixed::getRawBits( void ) const
 
 void Fixed::setRawBits( int const raw )
 {
-	this->_nb = raw;
+	_nb = raw;
 }
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)_nb / 256);
+	return ((float)_nb / (1 << _bits));
 }
 
 int		Fixed::toInt(void) const
@@ -63,7 +64,7 @@ Fixed &    Fixed::operator=( Fixed const & rhs )
 {
 	std::cout << "Assignment operator called" << std::endl;
 	if (this != &rhs )
-		this->_nb = rhs._nb;
+		_nb = rhs._nb;
 	return *this;
 }
 
@@ -81,7 +82,9 @@ Fixed &		Fixed::operator-=( Fixed const & i )
 
 Fixed &		Fixed::operator*=( Fixed const & i )
 {
-	_nb *= i._nb;
+	float tmp = this->toFloat();
+	tmp *= i.toFloat();
+	this->_nb = tmp * (1 << this->_bits);
 	return *this;
 }
 
@@ -130,7 +133,7 @@ Fixed & Fixed::min( Fixed & i, Fixed & j )
 
 const Fixed & Fixed::min( Fixed const & i, Fixed const & j )
 {
-	return (i > j ? i : j);
+	return (i._nb > j._nb ? i : j);
 }
 
 Fixed & Fixed::max( Fixed & i, Fixed & j )
@@ -140,64 +143,64 @@ Fixed & Fixed::max( Fixed & i, Fixed & j )
 
 const Fixed & Fixed::max( Fixed const & i, Fixed const & j )
 {
-	return (i > j ? i : j);
+	return (i._nb > j._nb ? i : j);
 }
 
-bool		operator>( Fixed const & i, Fixed const & j )
+bool		Fixed::operator>( Fixed const & i )
 {
-	return (i.getNb() > j.getNb());
+	return (i._nb > this->_nb);
 }
 
-bool		operator<( Fixed const & i, Fixed const & j )
+bool		Fixed::operator<( Fixed const & i )
 {
-	return !(i >= j);
+	return (this->_nb < i._nb);
 }
 
-bool		operator>=( Fixed const & i, Fixed const & j )
+bool		Fixed::operator>=( Fixed const & i )
 {
-	return !(j > i);
+	return (this->_nb >= i._nb);
 }
 
-bool		operator<=( Fixed const & i, Fixed const & j )
+bool		Fixed::operator<=( Fixed const & i )
 {
-	return !(i > j);
+	return (this->_nb <= i._nb);
 }
 
-bool		operator==( Fixed const & i, Fixed const & j )
+bool		Fixed::operator==( Fixed const & i )
 {
-	return (i.getNb() == j.getNb());
+	return (i._nb == this->_nb);
 }
 
-bool		operator!=( Fixed const & i, Fixed const & j )
+bool		Fixed::operator!=( Fixed const & i )
 {
-	return !(i == j);
+	return !(i._nb == this->_nb);
 }
 
-Fixed		operator+( Fixed const & i, Fixed const & j )
+Fixed		Fixed::operator+( Fixed const & i )
 {
-	Fixed copie(i);
-	copie += j;
+	Fixed copie(*this);
+	copie += i;
 	return (copie);
 }
 
-Fixed		operator-( Fixed const & i, Fixed const & j )
+Fixed		Fixed::operator-( Fixed const & i )
 {
-	Fixed copie(i);
-	copie -= j;
+	Fixed copie(*this);
+	copie -= i;
 	return (copie);
 }
 
-Fixed			operator*( Fixed const & i, Fixed const & j )
+Fixed			Fixed::operator*( Fixed const & i )
 {
-	Fixed copie(i);
-	copie *= j;
+	Fixed copie(*this);
+	copie *= i;
 	return (copie);
 }
 
-Fixed			operator/( Fixed const & i, Fixed const & j )
+Fixed			Fixed::operator/( Fixed const & i )
 {
-	Fixed copie(i);
-	copie /= j;
+	Fixed copie(*this);
+	copie /= i;
 	return (copie);
 }
 

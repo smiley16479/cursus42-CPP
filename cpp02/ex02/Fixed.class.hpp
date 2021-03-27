@@ -28,6 +28,16 @@ public:
 	Fixed &	operator++( void );
 	Fixed	operator--( int );
 	Fixed &	operator--( void );
+	bool	operator>( Fixed const & i );
+	bool	operator<( Fixed const & i );
+	bool	operator>=( Fixed const & i );
+	bool	operator<=( Fixed const & i );
+	bool	operator==( Fixed const & i );
+	bool	operator!=( Fixed const & i );
+	Fixed	operator+( Fixed const & i );
+	Fixed	operator-( Fixed const & i );
+	Fixed	operator*( Fixed const & i );
+	Fixed	operator/( Fixed const & i );
 	static	Fixed & min( Fixed & i, Fixed & j );
 	const static	Fixed & min( Fixed const & i, Fixed const & j );
 	static	Fixed & max( Fixed & i, Fixed & j );
@@ -40,16 +50,5 @@ private:
 };
 
 std::ostream & 	operator<<( std::ostream & o, Fixed const & i );
-bool			operator>( Fixed const & i, Fixed const & j );
-bool			operator<( Fixed const & i, Fixed const & j );
-bool			operator>=( Fixed const & i, Fixed const & j );
-bool			operator<=( Fixed const & i, Fixed const & j );
-bool			operator==( Fixed const & i, Fixed const & j );
-bool			operator!=( Fixed const & i, Fixed const & j );
-
-Fixed			operator+( Fixed const & i, Fixed const & j );
-Fixed			operator-( Fixed const & i, Fixed const & j );
-Fixed			operator*( Fixed const & i, Fixed const & j );
-Fixed			operator/( Fixed const & i, Fixed const & j );
 
 #endif
