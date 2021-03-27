@@ -90,7 +90,9 @@ Fixed &		Fixed::operator*=( Fixed const & i )
 
 Fixed &		Fixed::operator/=( Fixed const & i )
 {
-	_nb /= i._nb;
+	float tmp = this->toFloat();
+	tmp /= i.toFloat();
+	this->_nb = tmp * (1 << this->_bits);
 	return *this;
 }
 
@@ -128,12 +130,12 @@ Fixed &			Fixed::operator--( void )
 
 Fixed & Fixed::min( Fixed & i, Fixed & j )
 {
-	return (i > j ? i : j);
+	return (i < j ? i : j);
 }
 
-const Fixed & Fixed::min( Fixed const & i, Fixed const & j )
+Fixed const & Fixed::min( Fixed const & i, Fixed const & j )
 {
-	return (i._nb > j._nb ? i : j);
+	return (i < j ? i : j);
 }
 
 Fixed & Fixed::max( Fixed & i, Fixed & j )
@@ -141,17 +143,17 @@ Fixed & Fixed::max( Fixed & i, Fixed & j )
 	return (i > j ? i : j);
 }
 
-const Fixed & Fixed::max( Fixed const & i, Fixed const & j )
+Fixed const & Fixed::max( Fixed const & i, Fixed const & j )
 {
-	return (i._nb > j._nb ? i : j);
+	return (i > j ? i : j);
 }
 
-bool		Fixed::operator>( Fixed const & i )
+bool		Fixed::operator>( Fixed const & i ) const
 {
-	return (i._nb > this->_nb);
+	return (this->_nb > i._nb);
 }
 
-bool		Fixed::operator<( Fixed const & i )
+bool		Fixed::operator<( Fixed const & i ) const
 {
 	return (this->_nb < i._nb);
 }

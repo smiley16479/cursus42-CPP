@@ -28,8 +28,8 @@ public:
 	Fixed &	operator++( void );
 	Fixed	operator--( int );
 	Fixed &	operator--( void );
-	bool	operator>( Fixed const & i );
-	bool	operator<( Fixed const & i );
+	bool	operator>( Fixed const & i )const;
+	bool	operator<( Fixed const & i )const;
 	bool	operator>=( Fixed const & i );
 	bool	operator<=( Fixed const & i );
 	bool	operator==( Fixed const & i );
@@ -39,9 +39,9 @@ public:
 	Fixed	operator*( Fixed const & i );
 	Fixed	operator/( Fixed const & i );
 	static	Fixed & min( Fixed & i, Fixed & j );
-	const static	Fixed & min( Fixed const & i, Fixed const & j );
+	static const	Fixed & min( Fixed const & i, Fixed const & j );
 	static	Fixed & max( Fixed & i, Fixed & j );
-	const static	Fixed & max( Fixed const & i, Fixed const & j );
+	static const	Fixed & max( Fixed const & i, Fixed const & j );
 
 private:
 	static const int _bits = 8;
