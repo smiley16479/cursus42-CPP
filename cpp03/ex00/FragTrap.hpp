@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#define CALL_MEMBER_FN(object,ptrToMember)  ((object).*(ptrToMember))
 
 class FragTrap
 {
@@ -34,7 +35,8 @@ private:
 	unsigned int _melleeAttackDamage;
 	unsigned int _rangedAttackDamage;
 	unsigned int _armorDamageReduction;
-	void (FragTrap::*_tabAttack[5])(std::string const & target) const; // https://isocpp.org/wiki/faq/pointers-to-members (cpp pointer on member function) https://www.tutorialspoint.com/function-pointer-to-member-function-in-cplusplus
+	// https://isocpp.org/wiki/faq/pointers-to-members (cpp pointer on member function) :
+	void (FragTrap::*_tabAttack[5])(std::string const & target) const; 
 
 };
 

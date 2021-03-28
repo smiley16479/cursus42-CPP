@@ -4,12 +4,15 @@ FragTrap::FragTrap( std::string name ) : _hitPoints( 100 ), _maxHitPoints( 100 )
 _maxEnergyPoints( 100 ), _level( 1 ), _name( name ), _melleeAttackDamage( 30 ), _rangedAttackDamage( 20 ),
 _armorDamageReduction( 5 )
 {
-	std::cout << "Default Constructor called" << std::endl;
-	_tabAttack[0] = rangedAttack;
-	_tabAttack[1] = meleeAttack;
-	_tabAttack[2] = provokeAttack;
-	_tabAttack[3] = fingerAttack;
-	_tabAttack[4] = hammerAttack;
+	std::cout << "Default Constructor called"
+	" Booting sequence complete... Hello! I am your new steward bot.\nDesignation:"
+	" CL4P-TP, Hyperion Robot, Class C.\nPlease adjust factory settings to meet your needs before deployment ..."
+	"\nsettings acknoledged... New Designation : " << name << std::endl;
+	_tabAttack[0] = &FragTrap::rangedAttack;
+	_tabAttack[1] = &FragTrap::meleeAttack;
+	_tabAttack[2] = &FragTrap::provokeAttack;
+	_tabAttack[3] = &FragTrap::fingerAttack;
+	_tabAttack[4] = &FragTrap::hammerAttack;
 	srand (time(NULL));
 	return ;
 }
@@ -24,6 +27,8 @@ FragTrap::FragTrap( FragTrap const & src )
 {
 	std::cout << "Copy Constructor called" << std::endl;
 	*this = src ;
+	std::cout << _name << std::endl;
+	std::cout << _hitPoints << std::endl;
 	return ;
 }
 
@@ -35,6 +40,7 @@ FragTrap::~FragTrap()
 
 int FragTrap::getHealth( void ) const
 {
+	std::cout << _name << " : I have " << _energyPoints << " energyPoints" << std::endl;
 	return _energyPoints;
 }
 
@@ -59,17 +65,20 @@ FragTrap &    FragTrap::operator=( FragTrap const & rhs )
 
 void	FragTrap::vaulthunter_dot_exe(std::string const & target)
 {
-	// (FragTrap::_tabAttack[rand() % 5])(target);
-	FragTrap &fred = *this;
-	std::invoke(this->_tabAttack[rand() % 5],fred, target);
-	//  ((this).*(_tabAttack))
+	if (_energyPoints >= 25) {
+		std::cout << "Place your bets!" << std::endl;
+		CALL_MEMBER_FN(*this, this->_tabAttack[rand() % 5])("hey");
+		_energyPoints -= 25;
+	}
+	else
+		std::cout << "I lack ENERGY ! where is the plug..." << std::endl;
 	return ;
 }
 
 
 void	FragTrap::rangedAttack(std::string const & target) const
 {
-	std::cout << target << "Now, Get my rangeAttack in your face, shoesBox !" << std::endl;
+	std::cout << "This is why you do your homework! " << target << std::endl;
 	return ;
 }
 
@@ -99,6 +108,7 @@ void	FragTrap::hammerAttack(std::string const & target) const
 
 void	FragTrap::takeDamage(unsigned int amount)
 {
+	amount -= _armorDamageReduction;
 	if (_energyPoints - amount < 0)
 		_energyPoints = 0;
 	else
