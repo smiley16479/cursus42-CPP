@@ -1,5 +1,5 @@
-#ifndef FRAGTRAP_CLASS_H
-#define FRAGTRAP_CLASS_H
+#ifndef SCAVTRAP_CLASS_H
+#define SCAVTRAP_CLASS_H
 
 #include <iostream>
 
@@ -9,17 +9,17 @@
 // ((*this).*(this->_tabAttack[rand() % 5]))( target );
 // (this->*(this->_tabAttack[rand() % 5]))( target );
 
-class FragTrap
+class ScavTrap
 {
 public:
-	FragTrap( void );
-	FragTrap( std::string name );
-	FragTrap( int const n );
-	FragTrap( FragTrap const & src );
-	~FragTrap( void );
+	ScavTrap( void );
+	ScavTrap( std::string name );
+	ScavTrap( int const n );
+	ScavTrap( ScavTrap const & src );
+	~ScavTrap( void );
 
-	FragTrap&	operator=( FragTrap const & rhs );
-	unsigned int	vaulthunter_dot_exe(std::string const & target);
+	ScavTrap&	operator=( ScavTrap const & rhs );
+	void		challengeNewcomer( void );
 	unsigned int	rangedAttack(std::string const & target) const;
 	unsigned int	meleeAttack(std::string const & target) const;
 	unsigned int	provokeAttack(std::string const & target) const;
@@ -40,11 +40,11 @@ private:
 	unsigned int _rangedAttackDamage;
 	unsigned int _armorDamageReduction;
 	// https://isocpp.org/wiki/faq/pointers-to-members (cpp pointer on member function) :
-	unsigned int (FragTrap::*_tabAttack[5])(std::string const & target) const; 
+	unsigned int (ScavTrap::*_tabAttack[5])(std::string const & target) const; 
 
 };
 
 
-std::ostream &    operator<<( std::ostream & o, FragTrap const & i );
+std::ostream &    operator<<( std::ostream & o, ScavTrap const & i );
 
 #endif

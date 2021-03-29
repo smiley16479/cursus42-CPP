@@ -1,4 +1,5 @@
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void)
 {
@@ -14,6 +15,9 @@ int main(void)
 	std::cout << f._name << " has now : " << f.getHealth() << " of Energy\n";
 	f.beRepaired(1000);
 	std::cout << f._name << " has now : " << f.getHealth() << " of Energy\n";
+
+	ScavTrap h("Scavicon");
+	h.challengeNewcomer();
 
 	return 0;
 }
