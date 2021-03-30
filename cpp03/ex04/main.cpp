@@ -8,13 +8,21 @@ int main(void)
 {
 	SuperTrap S1("superTrap1");
 	SuperTrap S2(S1);
+	SuperTrap S3(10);
 
 
-	S1.rangedAttack(S1._name);
-	S1.vaulthunter_dot_exe(S1._name);
-	
-	NinjaTrap n("ninja");
-	S1.ninjaShoebox(n);
+	// S1.rangedAttack(S1._name);
+	// S1.vaulthunter_dot_exe(S1._name);
+
+	// Others inherited method :
+
+	// NinjaTrap n("ninja");
+	// S1.ninjaShoebox(n);
+	// S1.meleeAttack(n._name);
+	// S1.rangedAttack(n._name);
+	// S1.hammerAttack(n._name);
+
+	std::cout << S1 << std::endl;
 
 	return 0;
 }

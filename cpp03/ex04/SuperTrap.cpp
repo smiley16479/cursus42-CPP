@@ -15,16 +15,16 @@ SuperTrap::SuperTrap(std::string name) :  ClapTrap(name) ,  NinjaTrap(name) , Fr
 	return ;
 }
 
-// SuperTrap::SuperTrap( int const n ) : ClapTrap(n)
-// {
-// 	std::cout << "SuperTrap Parametric Constructor called" << std::endl;
-// 	return ;
-// }
+SuperTrap::SuperTrap( int const n ) : ClapTrap(n) ,NinjaTrap(n) , FragTrap(n)
+{
+	std::cout << "SuperTrap Parametric Constructor called" << std::endl;
+	return ;
+}
 
 SuperTrap::SuperTrap( SuperTrap const & src ) : ClapTrap(src) ,NinjaTrap(src) , FragTrap(src)
 {
 	std::cout << "SuperTrap Copy Constructor called" << std::endl;
-	// *this = src ;
+	*this = src ;
 	// std::cout << _name << std::endl;
 	// std::cout << _hitPoints << std::endl;
 	return ;
@@ -36,12 +36,27 @@ SuperTrap::~SuperTrap()
 	return ;
 }
 
-// unsigned int		SuperTrap::rangedAttack(std::string const & target) const
-// {
-// 	return (ClapTrap::rangedAttack(target));
-// }
+SuperTrap &    SuperTrap::operator=( SuperTrap const & rhs )
+{
+	std::cout << "Assignment operator called" << std::endl;
+	if ( this != &rhs ) {
+		_hitPoints = rhs._hitPoints;
+		_maxHitPoints = rhs._maxHitPoints;
+		_energyPoints = rhs._energyPoints;
+		_maxEnergyPoints = rhs._maxEnergyPoints;
+		_level = rhs._level;
+		_name = rhs._name;
+		_melleeAttackDamage = rhs._melleeAttackDamage;
+		_rangedAttackDamage = rhs._rangedAttackDamage;
+		_armorDamageReduction = rhs._armorDamageReduction;
+		for (int i = 0; i < 5; ++i)
+			_tabAttack[i] = rhs._tabAttack[i];
+	}
+	return *this;
+}
 
-// unsigned int		SuperTrap::meleeAttack(std::string const & target) const
-// {
-// 	return (ClapTrap::meleeAttack(target));
-// }
+std::ostream &    operator<<( std::ostream & o, SuperTrap const & i )
+{
+	o << i.getHealth();
+	return o;
+}
