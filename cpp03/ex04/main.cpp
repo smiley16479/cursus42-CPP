@@ -11,6 +11,10 @@ int main(void)
 
 
 	S1.rangedAttack(S1._name);
+	S1.vaulthunter_dot_exe(S1._name);
+	
+	NinjaTrap n("ninja");
+	S1.ninjaShoebox(n);
 
 	return 0;
 }

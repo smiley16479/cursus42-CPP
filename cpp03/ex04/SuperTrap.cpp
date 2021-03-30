@@ -21,7 +21,7 @@ SuperTrap::SuperTrap(std::string name) :  ClapTrap(name) ,  NinjaTrap(name) , Fr
 // 	return ;
 // }
 
-SuperTrap::SuperTrap( SuperTrap const & src ) : ClapTrap(src)
+SuperTrap::SuperTrap( SuperTrap const & src ) : ClapTrap(src) ,NinjaTrap(src) , FragTrap(src)
 {
 	std::cout << "SuperTrap Copy Constructor called" << std::endl;
 	// *this = src ;
