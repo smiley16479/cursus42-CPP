@@ -24,7 +24,7 @@ NinjaTrap::NinjaTrap( int const n ) : ClapTrap(n)
 NinjaTrap::NinjaTrap( NinjaTrap const & src ) : ClapTrap(src)
 {
 	std::cout << "NinjaTrap Copy Constructor called" << std::endl;
-	// *this = src ;
+	*this = src ;
 	// std::cout << _name << std::endl;
 	// std::cout << _hitPoints << std::endl;
 	return ;
@@ -66,4 +66,29 @@ unsigned int		NinjaTrap::ninjaShoebox(NinjaTrap & target)
 	std::cout << "<NINJ4-TP : " << _name << "> Hey Brother, Here take a refull !" << std::endl;
 	target.beRepaired(120);
 	return 0;
+}
+
+NinjaTrap &    NinjaTrap::operator=( NinjaTrap const & rhs )
+{
+	std::cout << "Assignment operator called" << std::endl;
+	if ( this != &rhs ) {
+		_hitPoints = rhs._hitPoints;
+		_maxHitPoints = rhs._maxHitPoints;
+		_energyPoints = rhs._energyPoints;
+		_maxEnergyPoints = rhs._maxEnergyPoints;
+		_level = rhs._level;
+		_name = rhs._name;
+		_melleeAttackDamage = rhs._melleeAttackDamage;
+		_rangedAttackDamage = rhs._rangedAttackDamage;
+		_armorDamageReduction = rhs._armorDamageReduction;
+		for (int i = 0; i < 5; ++i)
+			_tabAttack[i] = rhs._tabAttack[i];
+	}
+	return *this;
+}
+
+std::ostream &    operator<<( std::ostream & o, NinjaTrap const & i )
+{
+	o << i.getHealth();
+	return o;
 }

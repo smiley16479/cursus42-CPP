@@ -17,7 +17,7 @@ FragTrap::FragTrap( int const n ) : ClapTrap(n)
 FragTrap::FragTrap( FragTrap const & src ) : ClapTrap(src)
 {
 	std::cout << "FragTrap Copy Constructor called" << std::endl;
-	// *this = src ;
+	*this = src ;
 	// std::cout << _name << std::endl;
 	// std::cout << _hitPoints << std::endl;
 	return ;
@@ -29,7 +29,44 @@ FragTrap::~FragTrap()
 	return ;
 }
 
+unsigned int		FragTrap::vaulthunter_dot_exe(std::string const & target)
+{
+	unsigned int dmg = 0;
+	if (_energyPoints >= 25) {
+		std::cout << "<FR4G-TP : " << _name << "> Place your bets!" << std::endl;
+		dmg = (this->*(this->_tabAttack[rand() % 5]))( target );
+		_energyPoints -= 25;
+	}
+	else
+		std::cout << "I lack ENERGY ! where is the plug..." << std::endl;
+	return dmg;
+}
 
+FragTrap &    FragTrap::operator=( FragTrap const & rhs )
+{
+	std::cout << "Assignment operator called" << std::endl;
+	if ( this != &rhs ) {
+		this-> _hitPoints = rhs._hitPoints;
+		_maxHitPoints = rhs._maxHitPoints;
+		_energyPoints = rhs._energyPoints;
+		_maxEnergyPoints = rhs._maxEnergyPoints;
+		_level = rhs._level;
+		_name = rhs._name;
+		_melleeAttackDamage = rhs._melleeAttackDamage;
+		_rangedAttackDamage = rhs._rangedAttackDamage;
+		_armorDamageReduction = rhs._armorDamageReduction;
+		for (int i = 0; i < 5; ++i)
+			_tabAttack[i] = rhs._tabAttack[i];
+	}
+	return *this;
+}
+std::ostream &    operator<<( std::ostream & o, FragTrap const & i )
+{
+	o << i.getHealth();
+	return o;
+}
+
+//AVANT MODIF
 /*
 FragTrap::FragTrap( std::string name ) : _hitPoints( 100 ), _maxHitPoints( 100 ), _energyPoints( 100 ),
 _maxEnergyPoints( 100 ), _level( 1 ), _name( name ), _melleeAttackDamage( 30 ), _rangedAttackDamage( 20 ),
@@ -165,16 +202,3 @@ std::ostream &    operator<<( std::ostream & o, FragTrap const & i )
 	o << i.getHealth();
 	return o;
 }*/
-
-unsigned int		FragTrap::vaulthunter_dot_exe(std::string const & target)
-{
-	unsigned int dmg = 0;
-	if (_energyPoints >= 25) {
-		std::cout << "<FR4G-TP : " << _name << "> Place your bets!" << std::endl;
-		dmg = (this->*(this->_tabAttack[rand() % 5]))( target );
-		_energyPoints -= 25;
-	}
-	else
-		std::cout << "I lack ENERGY ! where is the plug..." << std::endl;
-	return dmg;
-}

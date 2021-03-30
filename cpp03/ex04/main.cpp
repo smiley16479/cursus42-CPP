@@ -16,6 +16,10 @@ int main(void)
 
 	// Others inherited method :
 
+	ScavTrap s1("ScavTrap");
+	ScavTrap s2(s1);
+
+
 	// NinjaTrap n("ninja");
 	// S1.ninjaShoebox(n);
 	// S1.meleeAttack(n._name);

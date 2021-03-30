@@ -24,10 +24,29 @@ NinjaTrap::NinjaTrap( int const n ) : ClapTrap(n)
 NinjaTrap::NinjaTrap( NinjaTrap const & src ) : ClapTrap(src)
 {
 	std::cout << "NinjaTrap Copy Constructor called" << std::endl;
-	// *this = src ;
+	*this = src ;
 	// std::cout << _name << std::endl;
 	// std::cout << _hitPoints << std::endl;
 	return ;
+}
+
+NinjaTrap &    NinjaTrap::operator=( NinjaTrap const & rhs )
+{
+	std::cout << "Assignment operator called" << std::endl;
+	if ( this != &rhs ) {
+		_hitPoints = rhs._hitPoints;
+		_maxHitPoints = rhs._maxHitPoints;
+		_energyPoints = rhs._energyPoints;
+		_maxEnergyPoints = rhs._maxEnergyPoints;
+		_level = rhs._level;
+		_name = rhs._name;
+		_melleeAttackDamage = rhs._melleeAttackDamage;
+		_rangedAttackDamage = rhs._rangedAttackDamage;
+		_armorDamageReduction = rhs._armorDamageReduction;
+		for (int i = 0; i < 5; ++i)
+			_tabAttack[i] = rhs._tabAttack[i];
+	}
+	return *this;
 }
 
 NinjaTrap::~NinjaTrap()
