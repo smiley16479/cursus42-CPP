@@ -1,7 +1,7 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( std::string name ) : _hitPoints( 100 ), _maxHitPoints( 100 ), _energyPoints( 50 ),
-_maxEnergyPoints( 50 ), _level( 1 ), _name( name ), _melleeAttackDamage( 20 ), _rangedAttackDamage( 15 ),
+ScavTrap::ScavTrap( std::string name ) : _name( name ), _hitPoints( 100 ), _maxHitPoints( 100 ), _energyPoints( 50 ),
+_maxEnergyPoints( 50 ), _level( 1 ), _melleeAttackDamage( 20 ), _rangedAttackDamage( 15 ),
 _armorDamageReduction( 3 )
 {
 	std::cout << "Default Constructor called"
@@ -109,7 +109,7 @@ unsigned int		ScavTrap::hammerAttack(std::string const & target) const
 void	ScavTrap::takeDamage(unsigned int amount)
 {
 	amount -= _armorDamageReduction;
-	if (_energyPoints - amount < 0)
+	if (_energyPoints - (int)amount < 0)
 		_energyPoints = 0;
 	else
 		_energyPoints -= amount;

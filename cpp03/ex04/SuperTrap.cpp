@@ -7,7 +7,7 @@ SuperTrap::SuperTrap(std::string name) :  ClapTrap(name) ,  NinjaTrap(name) , Fr
 	_energyPoints = 120;
 	_maxEnergyPoints = 120;
 	_melleeAttackDamage = 60;
-	_rangedAttackDamage = 5;
+	_rangedAttackDamage = 20;
 	_armorDamageReduction = 0;
 	std::cout << "SuperTrap Default Constructor called" << std::endl;
 	std::cout << "settings acknowledged... New system configuration : SuperTrap" << std::endl;

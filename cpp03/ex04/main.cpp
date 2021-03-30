@@ -20,10 +20,10 @@ int main(void)
 	ScavTrap s2(s1);
 
 
-	// NinjaTrap n("ninja");
+	NinjaTrap n("ninja");
 	// S1.ninjaShoebox(n);
-	// S1.meleeAttack(n._name);
-	// S1.rangedAttack(n._name);
+	S1.meleeAttack(n._name);
+	S1.rangedAttack(n._name);
 	// S1.hammerAttack(n._name);
 
 	std::cout << S1 << std::endl;

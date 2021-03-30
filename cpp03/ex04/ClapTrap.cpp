@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( std::string name ) : _hitPoints( 100 ), _maxHitPoints( 100 ), _energyPoints( 100 ),
-_maxEnergyPoints( 100 ), _level( 1 ), _name( name ), _melleeAttackDamage( 30 ), _rangedAttackDamage( 20 ),
+ClapTrap::ClapTrap( std::string name ) : _name( name ), _hitPoints( 100 ), _maxHitPoints( 100 ), _energyPoints( 100 ),
+_maxEnergyPoints( 100 ), _level( 1 ), _melleeAttackDamage( 30 ), _rangedAttackDamage( 20 ),
 _armorDamageReduction( 5 )
 {
 	std::cout << "ClapTrap Default Constructor called"
@@ -100,7 +100,7 @@ unsigned int		ClapTrap::hammerAttack(std::string const & target) const
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	amount -= _armorDamageReduction;
-	if (_energyPoints - amount < 0)
+	if (_energyPoints - (int)amount < 0)
 		_energyPoints = 0;
 	else
 		_energyPoints -= amount;
