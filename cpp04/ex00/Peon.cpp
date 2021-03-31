@@ -1,46 +1,46 @@
 #include "Peon.hpp"
 
 
-Peon::Peon( void ) : _nb( 0 )
+Peon::Peon( std::string name ) : Victim( name ), _nb( 0 )
 {
-	std::cout << "Default Constructor called" << std::endl;
+	std::cout << "Zog zog." << std::endl;
 	return ;
 }
 
-Peon::Peon( int const n ) : _nb( n )
+Peon::Peon( Peon const & src ): Victim( src )
 {
-	std::cout << "Parametric Constructor called" << std::endl;
-	return ;
-}
-
-Peon::Peon( Peon const & src )
-{
-	std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "Zog zog." << std::endl;
 	*this = src ;
 	return ;
 }
 
 Peon::~Peon()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout <<  "Bleuark..." << std::endl;
 	return ;
 }
 
-int Peon::getNb( void ) const
+std::string Peon::getName( void ) const
 {
-	return this->_nb;
+	return _name;
 }
 
 Peon & Peon::operator=( Peon const & rhs )
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "Zog zog?" << std::endl;
 	if (this != &rhs )
-		this->_nb = rhs.getNb();
+		this->_name = rhs.getName();
 	return *this;
+}
+
+void Peon::getPolymorphed( void ) const
+{
+	std::cout << _name << " was just polymorphed into a pink pony!" << std::endl;
+	return ;
 }
 
 std::ostream & operator<<( std::ostream & o, Peon const & i )
 {
-	o << "The value of _nb is : " << i.getNb();
+	o << i.getName();
 	return o;
 }

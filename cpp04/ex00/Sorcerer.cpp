@@ -1,13 +1,13 @@
 #include "Sorcerer.hpp"
 
 
-Sorcerer::Sorcerer( std::string name, int title ) : _name( name ), _title( title )
+Sorcerer::Sorcerer( std::string name, std::string title ) : _name( name ), _title( title )
 {
-	std::cout << "Default Constructor called" << std::endl;
+	std::cout << _name << ", " << _title << " is born!" << std::endl;
 	return ;
 }
 
-Sorcerer::Sorcerer( int const n ) : _name( "nobody" ), _title( n )
+Sorcerer::Sorcerer( std::string const title ) : _name( "nobody" ), _title( title )
 {
 	std::cout << _name << ", " << _title << " is born!" << std::endl;
 	return ;
@@ -26,18 +26,28 @@ Sorcerer::~Sorcerer()
 	return ;
 }
 
-int Sorcerer::getTitle( void ) const
+std::string Sorcerer::getTitle( void ) const
 {
-	std::cout << "I am " << _name << ", " << _title << ", and I love the smell of napalm in the morning!" << std::endl;
-	return this->_title;
+	std::string str = "I am ";
+	str += _name;
+	str += ", ";
+	str += _title;
+	str += ", and I love the smell of napalm in the morning!\n";
+	return str;
 }
 
 Sorcerer & Sorcerer::operator=( Sorcerer const & rhs )
 {
 	std::cout << "Assignment operator called" << std::endl;
 	if (this != &rhs )
-		this->_title = rhs.getTitle();
+		_title = rhs.getTitle();
 	return *this;
+}
+
+void Sorcerer::polymorph(Victim const & i) const
+{
+	i.getPolymorphed();
+	return ;
 }
 
 std::ostream & operator<<( std::ostream & o, Sorcerer const & i )

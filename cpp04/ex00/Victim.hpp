@@ -7,15 +7,15 @@
 class Victim
 {
 public:
-	Victim( std::string name );
 	Victim( std::string const name = "anonimous" );
 	Victim( Victim const & src );
 	~Victim( void );
 
-	Victim&   operator=( Victim const & rhs );
+	void	getPolymorphed() const;
+	Victim &   operator=( Victim const & rhs );
 	std::string getTitle( void ) const;
 
-private:
+protected:
 	std::string _name;
 };
 

@@ -2,23 +2,23 @@
 #define SORCERER_CLASS_H
 
 #include <iostream>
-
+#include "Victim.hpp"
 
 class Sorcerer
 {
 public:
-	Sorcerer( std::string name, int title );
-	Sorcerer( int const n = 0 );
+	Sorcerer( std::string name, std::string title );
+	Sorcerer( std::string const n );
 	Sorcerer( Sorcerer const & src );
 	~Sorcerer( void );
 
 	Sorcerer&   operator=( Sorcerer const & rhs );
+	void polymorph(Victim const & i) const;
+	std::string getTitle( void ) const;
 
-	int getTitle( void ) const;
-
-private:
+protected:
 	std::string _name;
-	int _title;
+	std::string _title;
 
 };
 

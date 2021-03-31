@@ -2,19 +2,21 @@
 #define PEON_CLASS_H
 
 #include <iostream>
+#include "Victim.hpp"
 
 
-class Peon
+class Peon : public virtual Victim
 {
 public:
 	Peon( void );
-	Peon( int const n = 0 );
+	Peon( std::string name );
 	Peon( Peon const & src );
 	~Peon( void );
 
 	Peon&   operator=( Peon const & rhs );
+	void	getPolymorphed( void ) const;
 
-	int getNb( void ) const;
+	std::string getName( void ) const;
 
 private:
 

@@ -1,15 +1,9 @@
 #include "Victim.hpp"
 
 
-Victim::Victim( std::string name ) : _name( name )
+Victim::Victim( std::string const name ) : _name( name )
 {
-	std::cout << "Default Constructor called" << std::endl;
-	return ;
-}
-
-Victim::Victim( std::string const name ) 
-{
-	std::cout << _name << ", " << " is born!" << std::endl;
+	std::cout << "A random victim called NOM just appeared!" << std::endl;
 	return ;
 }
 
@@ -38,6 +32,11 @@ Victim & Victim::operator=( Victim const & rhs )
 	if (this != &rhs )
 		this->_name = rhs.getTitle();
 	return *this;
+}
+
+void Victim::getPolymorphed( void ) const
+{
+	std::cout << _name << " was just polymorphed in a cute little sheep!" << std::endl;
 }
 
 std::ostream & operator<<( std::ostream & o, Victim const & i )
