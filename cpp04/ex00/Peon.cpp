@@ -1,45 +1,44 @@
-#include "Peon.hpp"
+#include "Pony.hpp"
 
-
-Peon::Peon( std::string name ) : Victim( name ), _nb( 0 )
+Pony::Pony( std::string name ) : Victim( name ), _nb( 0 )
 {
-	std::cout << "Zog zog." << std::endl;
+	std::cout << "PPffllouuuu" << std::endl;
 	return ;
 }
 
-Peon::Peon( Peon const & src ): Victim( src )
+Pony::Pony( Pony const & src ): Victim( src )
 {
-	std::cout << "Zog zog." << std::endl;
+	std::cout << "HiiiiiHannnn" << std::endl;
 	*this = src ;
 	return ;
 }
 
-Peon::~Peon()
+Pony::~Pony()
 {
-	std::cout <<  "Bleuark..." << std::endl;
+	std::cout <<  "This is the end of our beloved Pony" << std::endl;
 	return ;
 }
 
-std::string Peon::getName( void ) const
+std::string Pony::getName( void ) const
 {
-	return _name;
+	return ("Hiiiiiiii " + _name + "\n");
 }
 
-Peon & Peon::operator=( Peon const & rhs )
+Pony & Pony::operator=( Pony const & rhs )
 {
-	std::cout << "Zog zog?" << std::endl;
+	std::cout << "HiiiiiHannnn?" << std::endl;
 	if (this != &rhs )
 		this->_name = rhs.getName();
 	return *this;
 }
 
-void Peon::getPolymorphed( void ) const
+void Pony::getPolymorphed( void ) const
 {
-	std::cout << _name << " was just polymorphed into a pink pony!" << std::endl;
+	std::cout << _name << " was just polymorphed into a Peon!" << std::endl;
 	return ;
 }
 
-std::ostream & operator<<( std::ostream & o, Peon const & i )
+std::ostream & operator<<( std::ostream & o, Pony const & i )
 {
 	o << i.getName();
 	return o;

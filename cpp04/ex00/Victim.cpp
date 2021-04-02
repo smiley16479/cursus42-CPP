@@ -1,9 +1,8 @@
 #include "Victim.hpp"
 
-
 Victim::Victim( std::string const name ) : _name( name )
 {
-	std::cout << "A random victim called NOM just appeared!" << std::endl;
+	std::cout << "A random victim called " + _name + " just appeared!" << std::endl;
 	return ;
 }
 
@@ -22,8 +21,7 @@ Victim::~Victim()
 
 std::string Victim::getTitle( void ) const
 {
-	std::cout << "I am " << _name << " and Hoouu I like IceCream!" << std::endl;
-	return _name;
+	return ("I am " + _name + " and Hoouu I like IceCream!\n");
 }
 
 Victim & Victim::operator=( Victim const & rhs )

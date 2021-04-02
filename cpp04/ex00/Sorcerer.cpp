@@ -1,6 +1,5 @@
 #include "Sorcerer.hpp"
 
-
 Sorcerer::Sorcerer( std::string name, std::string title ) : _name( name ), _title( title )
 {
 	std::cout << _name << ", " << _title << " is born!" << std::endl;

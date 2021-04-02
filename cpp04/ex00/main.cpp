@@ -1,5 +1,6 @@
 #include "Victim.hpp"
 #include "Peon.hpp"
+#include "Pony.hpp"
 #include "Sorcerer.hpp"
 
 int main()
@@ -7,8 +8,11 @@ int main()
 	Sorcerer robert("Robert", "the Magnificent");
 	Victim jim("Jimmy");
 	Peon joe("Joe");
-	std::cout << robert << jim << joe;
+	Pony cheval("Pony");
+
+	std::cout << robert << jim << joe << cheval;
 	robert.polymorph(jim);
 	robert.polymorph(joe);
+	robert.polymorph(cheval);
 	return 0;
 }

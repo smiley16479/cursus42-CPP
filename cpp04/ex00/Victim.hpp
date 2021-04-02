@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-
 class Victim
 {
 public:
@@ -11,7 +10,7 @@ public:
 	Victim( Victim const & src );
 	~Victim( void );
 
-	void	getPolymorphed() const;
+	virtual void	getPolymorphed() const;
 	Victim &   operator=( Victim const & rhs );
 	std::string getTitle( void ) const;
 

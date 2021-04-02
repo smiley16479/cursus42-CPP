@@ -13,7 +13,7 @@ public:
 	~Sorcerer( void );
 
 	Sorcerer&   operator=( Sorcerer const & rhs );
-	void polymorph(Victim const & i) const;
+	virtual void polymorph(Victim const & i) const;
 	std::string getTitle( void ) const;
 
 protected:
