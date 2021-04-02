@@ -38,6 +38,6 @@ void RadScorpion::takeDamage(int damage)
 
 std::ostream & operator<<( std::ostream & o, RadScorpion const & i )
 {
-	o << "The value of _nb is : " << i.getType();
+	o << i.getType();
 	return o;
 }

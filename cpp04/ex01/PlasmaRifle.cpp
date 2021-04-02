@@ -1,32 +1,40 @@
 #include "PlasmaRifle.hpp"
 
-
+/*
 PlasmaRifle::PlasmaRifle( void )
-: AWeapon(_name = "Plasma Rifle", _apcost = 5, _damage = 21 ),
-/*  _name( "Plasma Rifle" ), _damage( 21 ), _apcost( 5 ), */ _attackOutput("* piouuu piouuu piouuu *")
+// : AWeapon(_name = "Plasma Rifle", _apcost = 5, _damage = 21 ),
+: AWeapon("Plasma Rifle",  5, 21 ),
+// _name( "Plasma Rifle" ), _damage( 21 ), _apcost( 5 ), 
+_attackOutput("* piouuu piouuu piouuu *")
 {
-	std::cout << "Default Constructor called" << std::endl;
+	std::cout << "PlasmaRifle Default Constructor called" << std::endl;
 	return ;
-}
+}*/
 
 PlasmaRifle::PlasmaRifle( std::string name, int apcost , int damage , std::string attackOutput )
-: AWeapon( _name = name, _apcost = apcost, _damage = damage ), 
-/* _name( "Plasma " ), _damage( 21 ), _apcost( 5 ),  */_attackOutput(attackOutput)
+// : AWeapon( _name = name, _apcost = apcost, _damage = damage ), // <-- pas bon 
+: AWeapon( name, apcost, damage ), _attackOutput(attackOutput)
+// : _name( "Plasma " ), _damage( 21 ), _apcost( 5 ) // <-- pas bon 
+// (:)_attackOutput(attackOutput)
 {
-	std::cout << "Default Constructor called" << std::endl;
+	// (void)name;
+	// (void)apcost;
+	// (void)damage;
+	// (void)attackOutput;
+	std::cout << "PlasmaRifle Default Constructor called" << std::endl;
 	return ;
 }
 
 PlasmaRifle::PlasmaRifle( PlasmaRifle const & src ) : AWeapon(src)
 {
-	std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "PlasmaRifle Copy Constructor called" << std::endl;
 	*this = src ;
 	return ;
 }
 
 PlasmaRifle::~PlasmaRifle()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "PlasmaRifle Destructor called" << std::endl;
 	return ;
 }
 
@@ -47,7 +55,7 @@ std::string PlasmaRifle::getName( void ) const
 
 PlasmaRifle & PlasmaRifle::operator=( PlasmaRifle const & rhs )
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "PlasmaRifle Assignment operator called" << std::endl;
 	if (this != &rhs )
 	{
 		_name = rhs._name;

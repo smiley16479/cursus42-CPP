@@ -22,8 +22,11 @@ int main()
 	Character* moi = new Character("moi");
 	std::cout << *moi;
 	Enemy* b = new RadScorpion();
+	(void)b;
 	AWeapon* pr = new PlasmaRifle();
+	std::cout << *pr;
 	AWeapon* pf = new PowerFist();
+	std::cout << *pf;
 	moi->equip(pr);
 	std::cout << *moi;
 	moi->equip(pf);
@@ -32,8 +35,8 @@ int main()
 	moi->equip(pr);
 	std::cout << *moi;
 	moi->attack(b);
-	std::cout << *moi;
-	moi->attack(b);
-	std::cout << *moi;
+	// std::cout << *moi;
+	// moi->attack(b);
+	// std::cout << *moi;
 	return 0;
 }

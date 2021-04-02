@@ -3,26 +3,26 @@
 
 AWeapon::AWeapon( void ) : _name( "unknow" ), _apcost( 0 ), _damage( 0 )
 {
-	std::cout << "Default Constructor called" << std::endl;
+	std::cout << "AWeapon Default Constructor called" << std::endl;
 	return ;
 }
 
 AWeapon::AWeapon( std::string const & name, int apcost, int damage ) : _name( name ), _apcost( apcost ), _damage( damage )
 {
-	std::cout << "Parametric Constructor called" << std::endl;
+	std::cout << "AWeapon Parametric Constructor called" << std::endl;
 	return ;
 }
 
 AWeapon::AWeapon( AWeapon const & src )
 {
-	std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "AWeapon Copy Constructor called" << std::endl;
 	*this = src ;
 	return ;
 }
 
 AWeapon::~AWeapon()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "AWeapon Destructor called" << std::endl;
 	return ;
 }
 
@@ -43,7 +43,7 @@ int AWeapon::getDamage( void ) const
 
 AWeapon & AWeapon::operator=( AWeapon const & rhs )
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "AWeapon Assignment operator called" << std::endl;
 	if (this != &rhs )
 	{
 		_name = rhs._name;
@@ -55,6 +55,6 @@ AWeapon & AWeapon::operator=( AWeapon const & rhs )
 
 std::ostream & operator<<( std::ostream & o, AWeapon const & i )
 {
-	o << i.getName();
+	o << "Ds operator << de AWeapon " + i.getName() << std::endl;
 	return o;
 }

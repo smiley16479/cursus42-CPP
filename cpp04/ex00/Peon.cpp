@@ -21,7 +21,7 @@ Peon::~Peon()
 
 std::string Peon::getName( void ) const
 {
-	return ("Naaame... Meee... " + _name + "\n");
+	return ("Naaame... Meee... (" + _name + ")\n");
 }
 
 Peon & Peon::operator=( Peon const & rhs )

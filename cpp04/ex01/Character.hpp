@@ -22,6 +22,10 @@ public:
 	void equip(AWeapon*);
 	void attack(Enemy*);
 	std::string virtual getName() const;
+	void* getWeapon() const;
+	int getAp() const;
+	std::string getWeaponName() const;
+
 
 	Character&   operator=( Character const & rhs );
 

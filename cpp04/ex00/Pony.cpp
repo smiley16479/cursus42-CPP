@@ -21,7 +21,7 @@ Pony::~Pony()
 
 std::string Pony::getName( void ) const
 {
-	return ("Hiiiiiiii " + _name + "\n");
+	return ("Hiiiiiiii (" + _name + ")\n");
 }
 
 Pony & Pony::operator=( Pony const & rhs )

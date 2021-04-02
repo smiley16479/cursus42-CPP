@@ -3,20 +3,20 @@
 
 Enemy::Enemy( int hp, std::string const & type ) : _hp( hp ), _type( type )
 {
-	std::cout << "Default Constructor called" << std::endl;
+	std::cout << "Enemy Default Constructor called" << std::endl;
 	return ;
 }
 
 Enemy::Enemy( Enemy const & src )
 {
-	std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "Enemy Copy Constructor called" << std::endl;
 	*this = src ;
 	return ;
 }
 
 Enemy::~Enemy()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Enemy Destructor called" << std::endl;
 	return ;
 }
 
@@ -30,7 +30,7 @@ void Enemy::takeDamage(int damage)
 
 Enemy & Enemy::operator=( Enemy const & rhs )
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "Enemy Assignment operator called" << std::endl;
 	if (this != &rhs )
 	{
 		_hp = rhs._hp;

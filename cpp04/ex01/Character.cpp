@@ -6,26 +6,26 @@ Character::Character( int ap, std::string const & name, AWeapon *wp ) : _ap( ap 
 	(void)_ap;
 	(void)_name;
 	(void)_wp;
-	std::cout << "Default Constructor called" << std::endl;
+	std::cout << "Character Default Constructor called" << std::endl;
 	return ;
 }
 
 Character::Character( std::string const & name ) :  _ap(40), _name(name), _wp(NULL) 
 {
-	std::cout << "_name Constructor called" << std::endl;
+	std::cout << "Character Name Constructor called" << std::endl;
 	return ;
 }
 
 Character::Character( Character const & src )
 {
-	std::cout << "Copy Constructor called" << std::endl;
+	std::cout << "Character Copy Constructor called" << std::endl;
 	*this = src ;
 	return ;
 }
 
 Character::~Character()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Character Destructor called" << std::endl;
 	return ;
 }
 
@@ -68,9 +68,26 @@ std::string Character::getName() const
 	return _name;
 }
 
+void* Character::getWeapon() const
+{
+	return _wp;
+}
+
+std::string Character::getWeaponName() const
+{	
+	if (_wp)
+		return _wp->getName();
+	return 0;
+}
+
+int Character::getAp() const
+{
+	return _ap;
+}
+
 Character & Character::operator=( Character const & rhs )
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "Character Assignment operator called" << std::endl;
 	if (this != &rhs )
 	{
 		_name = rhs._name;
@@ -82,6 +99,11 @@ Character & Character::operator=( Character const & rhs )
 
 std::ostream & operator<<( std::ostream & o, Character const & i )
 {
-	o << i.getName();
+	if (i.getWeapon())
+		o << i.getName() + " has " + std::to_string(i.getAp()) +
+		" AP and carries a " + i.getWeaponName() << std::endl;
+	else
+		o << i.getName() + " has " +  std::to_string(i.getAp()) +
+		" AP and is unarmed" << std::endl;
 	return o;
 }
