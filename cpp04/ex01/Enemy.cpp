@@ -26,6 +26,7 @@ void Enemy::takeDamage(int damage)
 		_hp = 0;
 	else
 		_hp -= damage;
+	std::cout << "Enemy has " << _hp << " left\n";
 }
 
 Enemy & Enemy::operator=( Enemy const & rhs )

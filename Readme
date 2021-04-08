@@ -1,0 +1,9 @@
+
+
+#allocation de mémoire pour les classes:
+Nex / delete
+##Si l'on veux allouer plusieus objets en même temps (et donc en faire un tableau) on peut faire :
+Student * students = new Student[42] / delete [] students
+
+#L'heritage ou héritage multiple
+https://cpp.developpez.com/faq/cpp/?page=L-heritage#Qu-est-ce-que-l-heritage-virtuel-et-quelle-est-son-utilite

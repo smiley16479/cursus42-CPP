@@ -33,6 +33,8 @@ void Character::recoverAP()
 {
 	if (_ap + 10 <= 40)
 		_ap += 10;
+	else
+		_ap = 40;
 	return ;
 }
 
@@ -47,7 +49,7 @@ void Character::attack(Enemy* enemy)
 {
 	if (enemy && _wp && (_ap - _wp->getAPCost()) >= 0)
 	{
-		std::cout <<  _name + " attaque " + enemy->getType() + " with a " + _wp->getName() + "\n";
+		std::cout <<  _name + " attack " + enemy->getType() + " with a " + _wp->getName() + "\n";
 		if ((enemy->getHP() - _wp->getDamage()) > 0)
 			enemy->takeDamage(_wp->getDamage());
 		else
@@ -58,8 +60,8 @@ void Character::attack(Enemy* enemy)
 		_ap -= _wp->getAPCost();
 		_wp->attack();
 	}
-	else
-		std::cout <<  _name + " attaque " + enemy->getType() + " with a " + _wp->getName() + "\n";
+	// else
+	// 	std::cout <<  _name + " has not enough action point to attack\n";
 	return ;
 }
 
@@ -100,10 +102,10 @@ Character & Character::operator=( Character const & rhs )
 std::ostream & operator<<( std::ostream & o, Character const & i )
 {
 	if (i.getWeapon())
-		o << i.getName() + " has " + std::to_string(i.getAp()) +
+		o << i.getName() + " has " << i.getAp() <<
 		" AP and carries a " + i.getWeaponName() << std::endl;
 	else
-		o << i.getName() + " has " +  std::to_string(i.getAp()) +
+		o << i.getName() + " has " << i.getAp() <<
 		" AP and is unarmed" << std::endl;
 	return o;
 }

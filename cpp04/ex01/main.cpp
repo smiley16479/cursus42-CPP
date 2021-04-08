@@ -35,8 +35,24 @@ int main()
 	moi->equip(pr);
 	std::cout << *moi;
 	moi->attack(b);
-	// std::cout << *moi;
-	// moi->attack(b);
-	// std::cout << *moi;
+	std::cout << *moi;
+	moi->attack(b);
+	std::cout << *moi;
+
+	//sup test
+	b = NULL;
+	moi->attack(b);
+	std::cout << *moi;
+
+	moi->recoverAP();
+	std::cout << *moi;
+	moi->recoverAP();
+	moi->recoverAP();
+	moi->recoverAP();
+	std::cout << *moi;
+
+	delete moi;
+	delete pr;
+	delete pf;
 	return 0;
 }

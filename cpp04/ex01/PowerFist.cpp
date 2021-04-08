@@ -50,7 +50,7 @@ PowerFist & PowerFist::operator=( PowerFist const & rhs )
 
 std::ostream & operator<<( std::ostream & o, PowerFist const & i )
 {
-	o << i.getName() + " cause " + std::to_string(i.getDamage()) +
-	" and cost " + std::to_string(i.getAPCost()) << std::endl;
+	o << i.getName() + " cause " << i.getDamage() <<
+	" and cost " << i.getAPCost() << std::endl;
 	return o;
 }

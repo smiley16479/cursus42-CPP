@@ -2,6 +2,8 @@
 #define CHARACTER_CLASS_H
 
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "AWeapon.hpp"
 #include "Enemy.hpp"
 

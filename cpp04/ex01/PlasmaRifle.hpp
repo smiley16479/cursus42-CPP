@@ -10,7 +10,7 @@ class PlasmaRifle : public virtual  AWeapon
 public:
 	// PlasmaRifle( void );
 	// Si on déclare comme ci-dessous on peut se passer du constructeur par default
-	PlasmaRifle(std::string _name = "Plasma Rifle", int _damage = 21, int _apcost = 5, std::string _attackOutput = "* piouuu piouuu piouuu *");
+	PlasmaRifle(std::string _name = "Plasma Rifle", int _apcost = 5, int _damage = 21, std::string _attackOutput = "* piouuu piouuu piouuu *");
 	// PlasmaRifle(std::string _name , int _apcost , int _damage ,std::string _attackOutput );
 	PlasmaRifle( PlasmaRifle const & src );
 	virtual ~PlasmaRifle( void );
