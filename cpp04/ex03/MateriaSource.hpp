@@ -10,7 +10,7 @@ class MateriaSource : public IMateriaSource
 public:
 	MateriaSource( int matNb = 0 );
 	MateriaSource( MateriaSource const & src );
-	~MateriaSource( void );
+	virtual ~MateriaSource( void );
 
 	virtual void learnMateria(AMateria*);
 	virtual AMateria* createMateria(std::string const & type);

@@ -11,7 +11,7 @@ class Character : public ICharacter
 public:
 	Character( std::string const name = "unkown" );
 	Character( Character const & src );
-	~Character( void );
+	virtual ~Character( void );
 
 	virtual std::string const & getName() const;
 	void getType() const;

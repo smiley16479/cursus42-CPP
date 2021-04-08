@@ -10,7 +10,7 @@ class PowerFist : public AWeapon
 public:
 	PowerFist(std::string _name = "Power Fist", int _damage = 50, int _apcost = 8, std::string _attackOutput = "* pschhh... SBAM ! *");
 	PowerFist( PowerFist const & src );
-	~PowerFist( void );
+	virtual ~PowerFist( void );
 
 	virtual PowerFist&   operator=( PowerFist const & rhs );
 

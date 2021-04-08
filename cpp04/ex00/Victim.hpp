@@ -8,7 +8,7 @@ class Victim
 public:
 	Victim( std::string const name = "anonimous" );
 	Victim( Victim const & src );
-	~Victim( void );
+	virtual ~Victim( void );
 
 	virtual void	getPolymorphed() const;
 	Victim &   operator=( Victim const & rhs );

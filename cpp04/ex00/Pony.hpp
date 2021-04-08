@@ -11,7 +11,7 @@ public:
 	Pony( void );
 	Pony( std::string name );
 	Pony( Pony const & src );
-	~Pony( void );
+	virtual ~Pony( void );
 
 	Pony&   operator=( Pony const & rhs );
 	virtual void	getPolymorphed( void ) const;
