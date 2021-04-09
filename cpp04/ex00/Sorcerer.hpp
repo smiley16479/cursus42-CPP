@@ -7,6 +7,7 @@
 class Sorcerer
 {
 public:
+	Sorcerer( void );
 	Sorcerer( std::string name, std::string title );
 	Sorcerer( std::string const n );
 	Sorcerer( Sorcerer const & src );

@@ -8,7 +8,7 @@ AssaultTerminator::AssaultTerminator( void ) : _nb( 0 )
 	return ;
 }
 
-AssaultTerminator::AssaultTerminator( int const n = 2 ) : _nb( n )
+AssaultTerminator::AssaultTerminator( int const n /* = 2  */) : _nb( n )
 {
 	std::cout << "Parametric Constructor called" << std::endl;
 	std::cout << "* teleports from space *" << std::endl;

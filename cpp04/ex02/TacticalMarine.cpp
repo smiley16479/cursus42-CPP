@@ -8,7 +8,7 @@ TacticalMarine::TacticalMarine( void ) : _nb( 0 )
 	return ;
 }
 
-TacticalMarine::TacticalMarine( int const n = 2) : _nb( n )
+TacticalMarine::TacticalMarine( int const n /* = 2 */) : _nb( n )
 {
 	std::cout << "Parametric Constructor called" << std::endl;
 	std::cout << "Tactical Marine ready for action !" << std::endl;
