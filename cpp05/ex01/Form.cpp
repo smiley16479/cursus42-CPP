@@ -83,3 +83,13 @@ std::ostream & operator<<( std::ostream & o, Form const & i )
 	o << "Execution required state : " << i.getExecRequiredGrd() << std::endl;
 	return o;
 }
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return "grade is too High\n";
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return "grade is too Low\n";
+}

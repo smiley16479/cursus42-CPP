@@ -9,30 +9,47 @@
 int main()
 {
 	try {
-		Bureaucrat gratte("gratte", 1); // remettre un grade correct...
-		Bureaucrat papier("papier", 12); // remettre un grade correct...
+		Bureaucrat gratte("gratte", 1);
+		Bureaucrat papier("papier", 26);
 		gratte.incGrd();
 		std::cout << gratte << std::endl;
+		std::cout << papier << std::endl;
+
+		// TEST WITH MORE FORM
 		// AForm AForm("202-46B", 12, 2, false);
 		// std::cout << AForm << std::endl;
 		// papier.signForm(AForm);
 		// std::cout << AForm << std::endl;
 
-		std::cout << "little intermede...\n\n";
+		std::cout << "\nForm Creation...\n\n";
 		PresidentialPardonForm pForm("Manson");
-		// RobotomyRequestForm rForm("Adel");
-		// ShrubberyCreationForm sForm("Adam");
+		RobotomyRequestForm rForm("Adel");
+		ShrubberyCreationForm sForm("Adam");
 		// std::cout << pForm << std::endl;
+
+		// std::cout << "\nError Checking...\n\n";
+		// papier.signForm(pForm); // Throw GradeTooLowException()
+		
+		std::cout << "\nForm signature...\n\n";
 		gratte.signForm(pForm);
-		// gratte.signForm(rForm);
-		// gratte.signForm(sForm);
+		gratte.signForm(rForm);
+		gratte.signForm(sForm);
 		// std::cout << pForm << std::endl;
-		// pForm.execute(gratte);
-		// rForm.execute(gratte);
+
+		std::cout << "\nForm excecution...\n\n";
+		pForm.execute(gratte);
+		rForm.execute(gratte);
 		// sForm.execute(gratte);
+
+		std::cout << "\nBureaucrat excecution Form...\n\n";
 		gratte.executeForm(pForm);
-		// ShrubberyCreationForm shru;
+		gratte.executeForm(rForm);
+		// gratte.executeForm(sForm);
+
+		std::cout << "\nBureaucrat excecution Form...\n\n";
+		ShrubberyCreationForm shru;
 		// shru.beSigned(gratte);
+		shru.execute(gratte);
 	}
 	catch(std::exception &e)
 	{
