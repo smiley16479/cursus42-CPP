@@ -7,3 +7,86 @@ Student * students = new Student[42] / delete [] students
 
 #L'heritage ou héritage multiple
 https://cpp.developpez.com/faq/cpp/?page=L-heritage#Qu-est-ce-que-l-heritage-virtuel-et-quelle-est-son-utilite
+
+
+
+
+Cpp_06 <Les_Cast>
+
+La conversion (transformer les bit d'une valeur vers le codage des bits d'un autre type)
+flag du compilateur pour eviter les downcast : -Wno-conversion
+flag du compilateur pour eviter les erreurs de variable unused : -Wno-unused
+
+La conversion identitaire (reinterprétation) changement de type en gardant l'organisation des bits originelle
+float a = 42.024f;
+void *b = &a;
+
+La réinterprétation sert à travailler avec des types d'addresse plus générique afin de faire des conversions (upcast - downcast)
+
+
+En Cpp il y a 5 cast 
+1- implicit cast 
+
+2- Static_cast :
+in a = 42;
+double b = a;
+int c = static_cast<int>(b) // explicit demotion, ok, I obey 
+
+-------------Exemple d'utilisation en CPP :
+
+class Parent								{};
+class Child1: public Parent {};
+class Child2: public Parent {};
+
+class Unrelated							{};
+
+int main(void){
+	Child1	a;
+	
+	Parent * b = &a;															// Implicit downcast -> Ok
+	Child1 * c = b;																// Explicit downcast -> Hell no !
+	Child2 * d = static_cast<Child2 *>(b); 				// Explicit downcast -> Ok, I obey
+
+	Unrelated * e = static_cast<Unrelated *>(&a); // Explicit converion -> No!
+	return 0;
+}
+
+
+3- Dynamic_cast:
+prérequis : il faut qu'il y ait au moins une méthode (fonction membre virtuelle)
+Si le dynamic_cast echoue il renvoie NULL
+
+
+4- reinterpret_cast :
+-> utilisé surtout pour retyper les données qui arrivent ds un programme ou socket (void ver char) 
+pour réutiliser (retyper) une information dont on avait perdu le type; 
+avec le reinterpret_cast on peut retyper nimporte quoi en nimporte quoi avec les conséquences que ça implique :
+il n'y a pas de check fait par le compilateur
+
+const_cast
+
+
+tableau récapitulatif des cast
+------------------+--------+----------+---------+-----------+------------
+		Cast					|	Conv.	 |	Reint.	|	Upcast	|	Downcast	|	Type qual.|
+------------------+--------+----------+---------+-----------+------------
+Implicit					|		yes	 |					|		yes		|						|						|
+static_cast				|		yes	 |					|		yes		|		yes			|						|
+dynamic_cast			|				 |					|		yes 	|		yes			|						| -> il faut qu'il y ait au moins une méthode (fonction membre virtuelle)
+reinterpret_cast	|				 |		yes		| 	yes		|		yes			|						|
+const_cast				|				 |					|					|						|		yes			|
+------------------+--------+----------+---------+-----------+-----------|
+Legagy C cast			|		yes	 |		yes		|		yes		|		yes			|		yes			|
+------------------+--------+----------+---------+-----------+-----------|
+
+------------------+-------------------+-----------------+----------------
+		Cast					|	Semantic check		|	Reliable at run	|	Tested at run	|
+------------------+-------------------+-----------------+----------------
+Implicit					|					yes				|				yes				|								|
+static_cast				|					yes				|									|								|
+dynamic_cast			|					yes				|				yes				|				yes			| -> une erreur est générée si le type de donnée n'est pas compatible avec le type demandé
+const_cast				|										|									|								|
+reinterpret_cast	|										|									|								|
+------------------+-------------------+-----------------+---------------|
+Legagy C cast			|				 						|									|								|
+------------------+-------------------+-----------------+---------------|
