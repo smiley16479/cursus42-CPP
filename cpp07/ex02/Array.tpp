@@ -1,4 +1,6 @@
-#include <array>
+#ifndef ARRAY_TPP
+#define ARRAY_TPP
+
 #include <iostream>
 
 template<typename T = int>
@@ -13,26 +15,27 @@ public:
 	Array(const Array<T>& copy);
 	unsigned int size(void) const;
 	void show(void) const;
-	// Array<T> operator=(const Array<T>& src);
-	T operator=(const T& src);
-	T operator[](unsigned int idx);
+	Array<T> & operator=(const Array<T>& src);
+	// Array & operator=(const Array& src);
+	T & operator[](unsigned int idx);
 	~Array();
+
 };
 
 template< typename T >
 Array<T>::Array() : _n( 0 )
 {
-	int * _array = new T[_n]();
+	_array = new T[_n]();
 }
 
 template< typename T >
 Array<T>::Array(unsigned int n) : _n( n )
 {
-	T * _array = new T[_n]();
+	_array = new T[_n]();
 }
 
 template< typename T >
-Array<T>::Array(const Array<T>& src)
+Array<T>::Array(const Array<T>& src) // peut être plutto : (const Array& src) 
 {
 	*this = src;
 }
@@ -56,36 +59,37 @@ void Array<T>::show(void) const
 		std::cout << _array[i] << std::endl;	
 }
 
+template< typename T>
+Array<T>& Array<T>::operator=(const Array<T>& src)
+{
+	if (this != &src)
+	{
+		delete [] _array;
+		_array = new T[src._n];
+		for (size_t i = 0; i < src._n; i++)
+			_array[i] = src._array[i];
+	}
+	return *this;
+}
+
 // template< typename T>
-// Array<T> Array<T>::operator=(const Array<T>& src)
+// Array& Array<T>::operator=(const Array& src)
 // {
 // 	if (this != &src)
-// 	{
-// 		delete [] _array;
-// 		T * _array = new T[src._n];
-// 		for (size_t i = 0; i < src._n; i++)
-// 			_array[i] = src._array[i];
-// 	}
-// 	return ;
+// 		return (*this) = src;
+// 	return *this;
 // }
 
 template< typename T>
-T Array<T>::operator=(const T& src)
+T & Array<T>::operator[](unsigned int n)
 {
-	if (this != &src)
-		return (*this) = src;
-	return ;
-}
-
-template< typename T>
-T Array<T>::operator[](unsigned int n)
-{
-	if (n > _n)
+	if (n >= _n)
 		throw std::out_of_range ("out of range accesion");
 	else
 		return _array[n];
 }
 
+#endif
 /////////////////////////////////////////////////
 /*
 #include <iostream>   
@@ -153,3 +157,60 @@ int main()
     return 0;   
 }
 */
+
+//Class de leo
+/* 	private:
+	T				*array;
+	unsigned int	length;
+
+public:
+
+	Array(void)
+	{
+		this->array = new T[0];
+		this->length = 0;
+		return ;
+	}
+
+	~Array(void)
+	{
+		if (this->length)
+			delete[] this->array;
+		return ;
+	}
+
+	Array(const Array &a)
+	{
+		*this = a;
+		return ;
+	}
+
+	Array				&operator=(const Array &a)
+	{
+		unsigned int i;
+
+		this->length = a.length;
+		this->array = new T[this->length];
+		for (i = 0; i < this->length; i++)
+			this->array[i] = a.array[i];
+		return (*this);
+	}
+
+	Array(unsigned int length)
+	{
+		this->array = new T[length];
+		this->length = length;
+		return ;
+	}
+
+	T					&operator[](unsigned int index)
+	{
+		if (index >= this->length)
+			throw(std::exception());
+		return (this->array[index]);
+	}
+
+	unsigned int		size(void) const
+	{
+		return (this->length);
+	} */

@@ -6,17 +6,17 @@
 #    By: adtheus <adtheus@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/09 23:20:17 by adtheus           #+#    #+#              #
-#    Updated: 2021/04/16 13:30:39 by adtheus          ###   ########.fr        #
+#    Updated: 2021/04/16 22:16:34 by adtheus          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = array
 COMPILER = g++
 
 SRC_DIR = .
 OBJ_DIR = obj
 
-SRC = 			scalar_conv.cpp
+SRC = 			main.cpp
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
 
