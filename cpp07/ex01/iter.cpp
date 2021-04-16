@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
+#include "iter.hpp"
+#include <typeinfo>
 
 template< typename T >
-void iter(T *tab, size_t size, void (*f)(T *elem) = 0)
+void iter(T *tab, size_t size, void (*f)(T *elem))
 {
 	if (f == NULL)
 		return;
@@ -11,51 +13,37 @@ void iter(T *tab, size_t size, void (*f)(T *elem) = 0)
 	return;	
 }
 
-void capitalize(char *c)
-{
-	if ('a' <= *c && *c <= 'z')
-		*c -= 32;
-}
-
 template< typename T >
-void add(T *c)
+void add(T *ptr)
 {
 	try
 	{
-		if ( char *ptr = dynamic_cast<char *>(c) ) {
+		if (*typeid(*ptr).name() == 'i')
+			*ptr = 'i';
+		else if (*typeid(*ptr).name() == 'c') {
 			if ('a' <= *ptr && *ptr <= 'z')
 				*ptr -= 32;
 		}
+		else if (*typeid(*ptr).name() == 'f') 
+			*ptr = 'f';
 		return ;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	*c -= 32;
 }
-
-typedef struct t_iter1
-{
-	virtual void f(){ std::cout << "iter1\n";}
-	char content;
-} s_iter1;
-
-typedef struct t_iter2
-{
-	virtual void f(){ std::cout << "iter2\n";}
-	int content;
-} s_iter2;
 
 int main(void)
 {
 	std::string str1 = "Hello c'est chaine 1";
 	char str2[] = "Hello c'est chaine 2";
-	int tab[20] = {0};
+	int tabi[20] = {0};
+	float tabf[20] = {0};
 
 	try
 	{
-		if (!(tab[120000] = 0))
+		if (!(tabi[1] = 0))
 			throw std::string("error_border");
 	}
 	catch(const std::exception& e)
@@ -66,13 +54,14 @@ int main(void)
 	{
 		std::cerr << e << '\n';
 	}
-	
-	// iter(str1, str1.length(), &capitalize);
-	// iter(str2, 20, add);
-	std::cout << str2 << std::endl;
-	// iter(tab, 20, add);
-	for (size_t i = 0; i < 20; i++)
-		std::cout << tab[i] << std::endl;
 
+	iter(str2, 20, add);
+	std::cout << str2 << std::endl;
+	iter(tabi, 20, add);
+	iter(tabf, 20, add);
+	for (size_t i = 0; i < 20; i++)
+		std::cout << tabi[i] << std::endl;
+	for (size_t i = 0; i < 20; i++)
+		std::cout << tabf[i] << std::endl;
 	return 0;
 }

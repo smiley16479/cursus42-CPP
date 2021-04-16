@@ -6,7 +6,7 @@
 #    By: adtheus <adtheus@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/09 23:20:17 by adtheus           #+#    #+#              #
-#    Updated: 2021/04/15 16:36:11 by adtheus          ###   ########.fr        #
+#    Updated: 2021/04/16 13:30:34 by adtheus          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ debug : $(NAME)
 	@./$(NAME)
 
 clean	:
-	@rm -f $(OBJ)
+	@rm -rf $(OBJ_DIR)
 
 fclean	: clean
 	@rm -f $(NAME)

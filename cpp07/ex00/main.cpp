@@ -1,10 +1,6 @@
 #include <iostream>
 #include <string>
-
-//•swap bitwise :
-//  a = a ^ b;
-//  b = a ^ b;
-//  a = a ^ b;
+#include "whatever.hpp"
 
 template< typename T >
 void swap(T & a, T & b) {
