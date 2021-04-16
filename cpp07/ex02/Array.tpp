@@ -15,8 +15,7 @@ public:
 	Array(const Array<T>& copy);
 	unsigned int size(void) const;
 	void show(void) const;
-	Array<T> & operator=(const Array<T>& src);
-	// Array & operator=(const Array& src);
+	Array & operator=(const Array& src);
 	T & operator[](unsigned int idx);
 	~Array();
 
@@ -35,7 +34,7 @@ Array<T>::Array(unsigned int n) : _n( n )
 }
 
 template< typename T >
-Array<T>::Array(const Array<T>& src) // peut être plutto : (const Array& src) 
+Array<T>::Array(const Array<T>& src) : _n( 0 )
 {
 	*this = src;
 }
@@ -64,9 +63,11 @@ Array<T>& Array<T>::operator=(const Array<T>& src)
 {
 	if (this != &src)
 	{
-		delete [] _array;
-		_array = new T[src._n];
-		for (size_t i = 0; i < src._n; i++)
+		if (_n)
+			delete [] _array;
+		_n = src._n;
+		_array = new T[_n];
+		for (size_t i = 0; i < _n; i++)
 			_array[i] = src._array[i];
 	}
 	return *this;

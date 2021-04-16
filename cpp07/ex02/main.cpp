@@ -3,12 +3,12 @@
 int main()
 {
 	Array<int> arrayI(5);
-	Array<int> arrayI2(5);
 	Array<float> arrayf(3);
 	arrayI[0] = 0.5;
 	arrayI[1] = 1;
 	arrayI[2] = 2;
-	arrayI2 = arrayI;
+	Array<int> arrayI2(arrayI);
+	// arrayI2 = arrayI;
 	arrayf[2] = 2.222;
 	try
 	{
