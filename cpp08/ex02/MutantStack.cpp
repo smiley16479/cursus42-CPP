@@ -31,7 +31,7 @@ MutantStack<T>::~MutantStack()
 }
 
 template < typename T >
-MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs ) throw (std::string const)
+MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs )
 {
 	std::cout << "MutantStack Assignment operator called" << std::endl;
 	if (this != &rhs ) {
@@ -45,6 +45,25 @@ MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs ) throw (std
 template < typename T >
 MutantStack<T>::iterator::iterator( void )
 {
+	std::cout << "iterator Default Constructor called" << std::endl;
+	return ;
+}
+
+template < typename T >
+MutantStack<T>::iterator& MutantStack<T>::iterator::operator++( void )
+{
+	std::cout << "iterator Default Constructor called" << std::endl;
+	return ;
+}
+
+template < typename T >
+MutantStack<T>::iterator& MutantStack<T>::iterator::operator--( void )
+{
+	for (size_t i = this->size(); i < count; i++)
+	{
+		/* code */
+	}
+	
 	std::cout << "iterator Default Constructor called" << std::endl;
 	return ;
 }
