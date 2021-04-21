@@ -6,38 +6,29 @@ class MutantStack : public std::stack<T>
 {
 public:
 	MutantStack( void );
-	MutantStack( unsigned int const n );
 	MutantStack( MutantStack const & src );
 	~MutantStack( void );
+	void generate( unsigned int const n );
 
 	typedef typename std::stack<T>::container_type::iterator iterator;
 	iterator begin(void);
 	iterator end(void);
-	// MutantStack&	operator=( MutantStack const & rhs ) throw (std::string const );
 
-	MutantStack&	operator=( MutantStack<T> const & rhs ); /* throw (std::string const );
- */
-private:
-	// std::stack<T> _stack;
+	MutantStack&	operator=( MutantStack<T> const & rhs); /* throw (std::string const );*/
+
 };
 
 template < typename T >
-std::ostream &    operator<<( std::ostream & o, MutantStack<T> const & i );
+std::ostream &    operator<<( std::ostream & o, MutantStack<T> & i);
 
 template < typename T >
 MutantStack<T>::MutantStack( void )
 {
+	srand(time(0));
 	std::cout << "MutantStack Default Constructor called" << std::endl;
 	return ;
 }
 
-template < typename T >
-MutantStack<T>::MutantStack( unsigned int const n )
-{
-	(void)n;
-	std::cout << "MutantStack Parametric Constructor called" << std::endl;
-	return ;
-}
 
 template < typename T >
 MutantStack<T>::MutantStack( MutantStack const & src )
@@ -55,8 +46,17 @@ MutantStack<T>::~MutantStack()
 }
 
 template < typename T >
+void MutantStack<T>::generate( unsigned int const n )
+{
+	for (size_t i = 0; i < n; i++)
+		this->push(rand());
+	return ;
+}
+
+template < typename T >
 MutantStack<T> & MutantStack<T>::operator=( MutantStack<T> const & rhs ) /* throw (std::string const) */
 {
+	std::cout <<  ("MutantStack Assignment operator called");
 	if (this != &rhs ) {
 		this->std::stack<T>::operator=(rhs);
 	}
@@ -78,8 +78,19 @@ typename MutantStack<T>::iterator	MutantStack<T>::end(void)
 }
 
 template < typename T >
-std::ostream & operator<<( std::ostream & o, MutantStack<T> const & i )
+std::ostream & operator<<( std::ostream & o, MutantStack<T> & i )
 {
-	o << "The _index : " << i.getIdx();
+	std::stack<T> tmp;
+	o << "The complete stack is : \n";
+	while (i.size()) {
+		o <<  i.top() << std::endl;
+		tmp.push(i.top());
+		i.pop();
+	}
+	o << "<<End of stack>>\n";
+	while (tmp.size()) {
+		i.push(tmp.top());
+		tmp.pop();
+	}
 	return o;
 }
