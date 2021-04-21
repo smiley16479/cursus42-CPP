@@ -1,10 +1,4 @@
 #include <iostream>
-#include <algorithm>
-#include <iostream>
-#include <iterator>
-#include <fstream>
-#include <array>
-#include <list>
 #include <stack>
 
 template < typename T >
@@ -16,20 +10,13 @@ public:
 	MutantStack( MutantStack const & src );
 	~MutantStack( void );
 
-	class iterator
-	{
-		public:
-			iterator( void );
+	typedef typename std::stack<T>::container_type::iterator iterator;
+	iterator begin(void);
+	iterator end(void);
+	// MutantStack&	operator=( MutantStack const & rhs ) throw (std::string const );
 
-			//Iterators Préfixés
-			iterator&	operator++( void );
-			iterator&	operator--( void );
-		private:
-			std::list<T> _list;
-	};
-
-	MutantStack&	operator=( MutantStack const & rhs ) throw (std::string const );
-
+	MutantStack&	operator=( MutantStack<T> const & rhs ); /* throw (std::string const );
+ */
 private:
 	// std::stack<T> _stack;
 };
@@ -47,6 +34,7 @@ MutantStack<T>::MutantStack( void )
 template < typename T >
 MutantStack<T>::MutantStack( unsigned int const n )
 {
+	(void)n;
 	std::cout << "MutantStack Parametric Constructor called" << std::endl;
 	return ;
 }
@@ -67,22 +55,26 @@ MutantStack<T>::~MutantStack()
 }
 
 template < typename T >
-MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs ) throw (std::string const)
+MutantStack<T> & MutantStack<T>::operator=( MutantStack<T> const & rhs ) /* throw (std::string const) */
 {
-	std::cout << "MutantStack Assignment operator called" << std::endl;
 	if (this != &rhs ) {
-
+		this->std::stack<T>::operator=(rhs);
 	}
 	else
-		throw std::string ("Smth strange");
+		throw std::string ("MutantStack Assignment operator failled");
 	return *this;
 }
 
 template < typename T >
-MutantStack<T>::iterator::iterator( void )
+typename MutantStack<T>::iterator	MutantStack<T>::begin(void)
 {
-	std::cout << "iterator Default Constructor called" << std::endl;
-	return ;
+	return this->c.begin();
+}
+
+template < typename T >
+typename MutantStack<T>::iterator	MutantStack<T>::end(void)
+{
+	return this->c.end();
 }
 
 template < typename T >

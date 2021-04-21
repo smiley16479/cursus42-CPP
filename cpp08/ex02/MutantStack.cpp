@@ -1,6 +1,5 @@
 #include "MutantStack.hpp"
 
-
 template < typename T >
 MutantStack<T>::MutantStack( void )
 {
@@ -11,12 +10,13 @@ MutantStack<T>::MutantStack( void )
 template < typename T >
 MutantStack<T>::MutantStack( unsigned int const n )
 {
+	(void)n;
 	std::cout << "MutantStack Parametric Constructor called" << std::endl;
 	return ;
 }
 
 template < typename T >
-MutantStack<T>::MutantStack( MutantStack const & src )
+MutantStack<T>::MutantStack( MutantStack<T> const & src )
 {
 	std::cout << "MutantStack Copy Constructor called" << std::endl;
 	*this = src ;
@@ -31,7 +31,7 @@ MutantStack<T>::~MutantStack()
 }
 
 template < typename T >
-MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs )  throw (std::string const )
+MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs ) throw (std::string const )
 {
 	std::cout << "MutantStack Assignment operator called" << std::endl;
 	if (this != &rhs ) {
@@ -42,7 +42,7 @@ MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs )  throw (st
 	return *this;
 }
 
-template < typename T >
+ template < typename T >
 MutantStack<T>::iterator::iterator( void )
 {
 	std::cout << "iterator Default Constructor called" << std::endl;
@@ -50,21 +50,39 @@ MutantStack<T>::iterator::iterator( void )
 }
 
 template < typename T >
-MutantStack<T>::iterator& MutantStack<T>::iterator::operator++( void )
+typename  MutantStack<T>::iterator& MutantStack<T>::iterator::operator++( void )
 {
-	std::cout << "iterator Default Constructor called" << std::endl;
+	std::cout << "iterator ++ operator called" << std::endl;
+	return ;
+} 
+
+template < typename T >
+typename MutantStack<T>::iterator& MutantStack<T>::iterator::operator--( void )
+{
+	// for (size_t i = 0; i < 2; i++)
+	// {
+	// 	// this->size()
+	// 	this->push(4);
+	// }
+	std::cout << "iterator -- operator called" << std::endl;
 	return ;
 }
 
 template < typename T >
-MutantStack<T>::iterator& MutantStack<T>::iterator::operator--( void )
+void MutantStack<T>::test_mutant( void )
 {
-	for (size_t i = this->size(); i < count; i++)
+	this->m_vector[0];
+}
+
+template < typename T >
+void MutantStack<T>::iterator::test( void )
+{
+	std::cout << "iterator test called" << std::endl;
+	for (size_t i = 0; i < 2; i++)
 	{
-		/* code */
+		// this->size()
+		this->push(4);
 	}
-	std::cout << "iterator Default Constructor called" << std::endl;
-	return ;
 }
 
 template < typename T >
