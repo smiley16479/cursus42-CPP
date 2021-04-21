@@ -31,7 +31,7 @@ MutantStack<T>::~MutantStack()
 }
 
 template < typename T >
-MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs )
+MutantStack<T> & MutantStack<T>::operator=( MutantStack const & rhs )  throw (std::string const )
 {
 	std::cout << "MutantStack Assignment operator called" << std::endl;
 	if (this != &rhs ) {
@@ -63,7 +63,6 @@ MutantStack<T>::iterator& MutantStack<T>::iterator::operator--( void )
 	{
 		/* code */
 	}
-	
 	std::cout << "iterator Default Constructor called" << std::endl;
 	return ;
 }

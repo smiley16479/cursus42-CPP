@@ -28,7 +28,7 @@ public:
 			iterator&	operator++( void );
 			iterator&	operator--( void );
 		private:
-			std::list<T> _list;
+			std::vector<T> _vector;
 	};
 
 	MutantStack&	operator=( MutantStack const & rhs ) throw (std::string const );
