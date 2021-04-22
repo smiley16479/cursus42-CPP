@@ -12,7 +12,7 @@ std::vector<int>::iterator easyfind(T tab, int i) throw (std::string const)
 	return (trouve);
 }
 
-int main(int argc, char const *argv[])
+int main(/* int argc, char const *argv[] */)
 {
 	srand(time(NULL));
 	std::vector<int> tab;

@@ -6,7 +6,6 @@
 #include <iostream>
 #include <iterator>
 #include <fstream>
-#include <array>
 #include <vector>
 #include <deque>
 
@@ -22,11 +21,11 @@ public:
 
 	int getIdx( void ) const;
 	void addNumber( int ) throw (std::string const);
-	void generate( int ) throw (std::string const);
+	void generate( unsigned int ) throw (std::string const);
 	int shortestSpan( void ) const throw (std::string const);
 	int longestSpan( void ) const throw (std::string const);
 	void showElem( unsigned int ) const;
-	void display( void ) const;
+	// void display( void ) const;
 
 private:
 

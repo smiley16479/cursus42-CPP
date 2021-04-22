@@ -1,4 +1,5 @@
 #include "span.hpp"
+#include <stdint.h>
 
 
 /* Span::Span( void ) : _size( 0 ), _tab(_size, 0), _it(_tab.begin())
@@ -7,14 +8,14 @@
 	return ;
 } */
 
-Span::Span( unsigned int const n ) : _size( n ), _tab(_size, 0), _idx(0) 
+Span::Span( unsigned int const n ) : _size( n ), _idx(0), _tab(_size, 0)
 {
 	srand(time(NULL));
 	std::cout << "Span Parametric Constructor called" << std::endl;
 	return ;
 }
 
-Span::Span( Span const & src ) : _size( src._size ), _tab(_size, 0), _idx(0) 
+Span::Span( Span const & src ) : _size( src._size ), _idx(0), _tab(_size, 0)
 {
 	srand(time(0));
 	std::cout << "Span Copy Constructor called" << std::endl;
@@ -41,7 +42,7 @@ void Span::addNumber( int to_add ) throw (std::string const){
 	return ;
 }
 
-void Span::generate( int upper_border) throw (std::string const){
+void Span::generate( unsigned int upper_border) throw (std::string const){
 	std::vector<int>::iterator it = _tab.begin();
 	if (_size >= upper_border)
 		for (_idx = 0; _idx < upper_border; ++_idx)
@@ -82,13 +83,13 @@ void Span::showElem( unsigned int i ) const{
 		throw std::string("Cannot find element asked : array has not enough elements");	
 }
 
-void Span::display( void ) const
+/* void Span::display( void ) const
 {
 	// std::cout << "avt truc chelou" << std::endl;
 	auto print = [](const int& n) { std::cout << n << "\n";};
 	// std::cout << "après truc chelou" << std::endl;
 	std::for_each(_tab.begin(), _tab.begin() + _idx, print);
-}
+} */
 
 Span & Span::operator=( Span const & rhs ) throw (std::string const)
 {
